@@ -1,0 +1,10 @@
+---
+- name: Install Java on linux and ubuntu
+  hosts: all
+  gather_facts: True
+  become: true
+  roles:
+    - java
+    - jenkins
+    - nexus
+    - jfrog

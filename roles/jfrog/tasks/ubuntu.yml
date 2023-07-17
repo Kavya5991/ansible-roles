@@ -1,0 +1,17 @@
+- name: Download the Jfrog package
+  ansible.builtin.get_url:
+    url: "{{ installer_Url }}"
+    dest: /tmp/artifactory-pro.deb
+
+- name: Install Artifactory
+  ansible.builtin.apt:
+    deb: /tmp/artifactory-pro.deb
+
+- name: Start Artifactory service
+  ansible.builtin.service:
+    name: artifactory
+    state: started
+
+
+
+  

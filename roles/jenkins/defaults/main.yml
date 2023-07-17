@@ -1,0 +1,10 @@
+---
+#linux
+version: 2023
+repo_key: "https://pkg.jenkins.io/redhat-stable/jenkins.io-{{ version }}.key"
+repo_Url: "https://pkg.jenkins.io/redhat-stable/jenkins.repo"
+dest_path: "/etc/yum.repos.d/jenkins.repo"
+java_home: /usr/lib/jvm/java-11-openjdk-11.0.19.0.7-1.amzn2.0.1.x86_64
+#ubuntu
+repository_key: "https://pkg.jenkins.io/debian-stable/jenkins.io.key"
+repository_Url: "https://pkg.jenkins.io/debian-stable/binary/jenkins_2.319.1_all.deb"

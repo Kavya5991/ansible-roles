@@ -1,0 +1,5 @@
+---
+RELEASE: 7.63.5
+installer_Url: https://releases.jfrog.io/artifactory/artifactory-pro-debs/pool/jfrog-artifactory-pro/jfrog-artifactory-pro-{{ RELEASE}}.deb
+#linux
+jfrog_url: "https://releases.jfrog.io/artifactory/artifactory-pro-rpms/jfrog-artifactory-pro/jfrog-artifactory-pro-{{ RELEASE }}.rpm"

@@ -1,0 +1,46 @@
+---
+- name: create group named nexus
+  ansible.builtin.group:
+    name: "{{ nexus_group }}"
+- name: create user named nexus
+  ansible.builtin.user:
+    name: "{{ nexus_user }}"
+    create_home: true
+    system: true
+    group: "{{ nexus_group }}"
+- name: create nexus folder
+  ansible.builtin.file:
+    path: "{{ nexus_dir }}"
+    state: directory
+    owner: "{{ nexus_user }}"
+    group: "{{ nexus_group }}"
+    recurse: yes
+    mode: 0755
+- name: create sonatype folder
+  ansible.builtin.file:
+    path: "{{ nexus_dir }}"
+    state: directory
+    owner: "{{ nexus_user }}"
+    group: "{{ nexus_group }}"
+    recurse: yes
+    mode: 0755
+
+- name: Download nexus Software using zip url
+  ansible.builtin.get_url:
+    url: "{{ nexus_url }}"
+    dest: "{{ nexus_dir }}"
+- name: Unzip nexus software zip file
+  ansible.builtin.unarchive:
+    src: "{{ nexus_dir }}nexus-{{ nexus_version }}-unix.tar.gz"
+    dest: "{{nexus_dir}}"
+    owner: "{{ nexus_user }}"
+    group: "{{ nexus_group }}"
+    remote_src: yes
+- name: uncomment the run as user from nexus file
+  lineinfile:
+      path: "{{ nexus_rc_file }}"
+      line: run_as_user="nexus"
+
+- name: Start Nexus service
+  command: "{{ nexus_dir }}nexus-{{ nexus_version }}/bin/nexus start"
+  become_user: nexus

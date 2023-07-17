@@ -1,0 +1,16 @@
+---
+- name: Download jfrog artifactory using zip url
+  ansible.builtin.get_url:
+    url: "{{ jfrog_url }}"
+    dest: "/tmp/artifactory-pro-{{ RELEASE }}.rpm"
+
+- name: Install Artifactory
+  ansible.builtin.yum:
+    name: "/tmp/artifactory-pro-{{ RELEASE }}.rpm"
+    state: present
+
+- name: Start Artifactory service
+  ansible.builtin.service:
+    name: artifactory
+    state: started
+    enabled: yes

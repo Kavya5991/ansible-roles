@@ -1,0 +1,36 @@
+---
+- name: Install java11
+  ansible.builtin.command:
+    cmd: amazon-linux-extras install java-openjdk11 -y
+- name: Set JAVA_HOME path
+  ansible.builtin.blockinfile:
+      path: ~/.bashrc
+      block: |
+        export JAVA_HOME={{ java_home }}
+- name: Source ~/.bashrc
+  ansible.builtin.shell:
+    cmd: source ~/.bashrc
+      
+
+- name: Add the Jenkins repo to yum repo
+  ansible.builtin.get_url:
+      url: "{{repo_Url}}"
+      dest: "{{ dest_path }}"
+- name: Import key file to enable to installtion from package
+  ansible.builtin.rpm_key:
+      state: present
+      key: "{{ repo_key }}"
+- name: Upgrade all packages
+  ansible.builtin.yum:
+    name: '*'
+    state: latest
+- name: Install Jenkins
+  ansible.builtin.yum:
+    name: jenkins
+    state: present
+- name: Start Jenkins
+  ansible.builtin.systemd:
+    enabled: yes
+    name: jenkins
+    state: started
+

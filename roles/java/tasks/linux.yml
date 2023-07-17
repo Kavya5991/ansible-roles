@@ -1,0 +1,12 @@
+---
+- name: Install Java 8 on amazon Linux2
+  ansible.builtin.yum:
+    name: "{{ java_package_version }}"
+    state: present
+- name: Setup java path
+  ansible.builtin.template:
+    src: java-home.j2
+    dest: "{{ dest_path }}"
+    mode: 0644
+
+

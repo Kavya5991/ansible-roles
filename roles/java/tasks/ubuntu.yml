@@ -1,0 +1,21 @@
+---
+- name: update apt
+  ansible.builtin.apt:
+    update_cache: true
+- name: Install Java 8 on ubuntu os
+  ansible.builtin.apt:
+    name: "{{ java_package }}"
+    state: present
+    #update_cache: true
+- name: Set JAVA_HOME path
+  ansible.builtin.blockinfile:
+    path: ~/.bashrc
+    block: |
+      export JAVA_HOME={{ java_home_ubuntu }}
+      export PATH=$PATH:{{ java_home_ubuntu }}/bin
+- name: Source ~/.bashrc
+  ansible.builtin.shell:
+    cmd: source ~/.bashrc
+  args:
+    executable: /bin/bash
+

@@ -1,0 +1,7 @@
+---
+- name: Install Jenkins on Ubuntu OS
+  import_tasks: ubuntu.yml
+  when: ansible_os_family== 'Debian'
+- name: Install Jfrog on Amazon linux 2 
+  import_tasks: linux.yml
+  when: ansible_os_family== 'RedHat'

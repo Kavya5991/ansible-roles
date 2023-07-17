@@ -1,0 +1,26 @@
+---
+- name: Download the Jenkins package
+  ansible.builtin.get_url:
+    url: "{{ repository_Url }}"
+    dest: /tmp/jenkins.deb
+
+- name: Install dependent packages using apt
+  ansible.builtin.apt:
+    pkg: "{{ item }}"
+    state: present
+  with_items:
+      - daemon
+      - net-tools
+
+- name: Install Jenkins by running debian package using deb
+  ansible.builtin.apt:
+    deb: /tmp/jenkins.deb
+
+- name: Start Jenkins service
+  ansible.builtin.service:
+    name: jenkins
+    state: started
+
+
+
+  
