@@ -6,5 +6,5 @@
   roles:
     - java
     - nexus
-    - jfrog
-    - jenkins
+    #- jfrog
+    #- jenkins

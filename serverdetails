@@ -1,9 +1,13 @@
 [all]
-[linux-nexus]
-54.146.239.137 ansible_user=ec2-user ansible_ssh_private_key_file=/home/kavya/ansible-training/ansible.pem
-[ubuntu-nexus]
-3.82.115.36 ansible_user=ubuntu ansible_ssh_private_key_file=/home/kavya/ansible-training/ansible.pem
-[ubuntu_java_jfrog_jenkins]
+
+[java-nexus]
+#linux
+44.211.219.168 ansible_user=ec2-user ansible_ssh_private_key_file=/home/kavya/ansible-training/ansible.pem
+#ubuntu
+54.196.148.178 ansible_user=ubuntu ansible_ssh_private_key_file=/home/kavya/ansible-training/ansible.pem
+
+[java_jfrog_jenkins]
+#ubuntu
 44.204.91.56 ansible_user=ubuntu ansible_ssh_private_key_file=/home/kavya/ansible-training/ansible.pemansible_user=ubuntu ansible_ssh_private_key_file=/home/kavya/ansible-training/ansible.pem
-[linux_java_jfrog_jenkins]
+#linux
 52.54.214.247 ansible_user=ec2-user ansible_ssh_private_key_file=/home/kavya/ansible-training/ansible.pem
