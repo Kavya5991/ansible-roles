@@ -5,6 +5,6 @@
   become: true
   roles:
     - java
-    - jenkins
     - nexus
     - jfrog
+    - jenkins
