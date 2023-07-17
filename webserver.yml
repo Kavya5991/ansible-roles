@@ -1,5 +1,5 @@
 ---
-- name: Install Java on linux and ubuntu
+- name: Install Java on Linux and Ubuntu
   hosts: all
   gather_facts: True
   become: true
